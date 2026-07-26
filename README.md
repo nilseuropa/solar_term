@@ -6,8 +6,8 @@
 
 ## Build
 
-Build instructions for the [case designed by ATA F&E](doc/build_ata.md).
-Original build instructions are [here](doc/build_ata.md).
+* Build instructions for the [case designed by ATA F&E](doc/build_ata.md).
+* Original build instructions are [here](doc/build_nils.md).
 
 ## Install SolarOS
 
