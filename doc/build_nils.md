@@ -27,4 +27,4 @@ soft surface.
 5. Align both enclosure halves and fasten them with the four M3 screws.
 6. Insert the battery and install SolarOS.
 
-![](solarterm.jpg)
+![](oribuild.jpg)
