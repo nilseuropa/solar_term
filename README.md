@@ -79,8 +79,9 @@ restart automatically; press **PWR** if it remains in download mode.
 2. Turn on the Rii keyboard using the switch on its side.
 3. Press the pairing button on the back of the keyboard to put it in pairing
    mode.
-4. Press and hold SolarTerm's **KEY** button for about two seconds. _(Release it
-   when SolarOS shows that BLE keyboard pairing has started.)_
+4. Press and hold SolarTerm's **KEY** button for about two seconds. Release it
+   when the keyboard icon in the status bar changes to its pairing/scanning
+   state; the display shell does not print a pairing message.
 5. Wait for the keyboard to connect, then type at the shell to test it.
 
 SolarOS remembers the keyboard after the first connection and reconnects to it
