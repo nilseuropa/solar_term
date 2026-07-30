@@ -9,8 +9,10 @@
 - 4x M3 inserts
 - (optional) [Plexiglass](stl/plexiglass.dxf) 2mm cutout
 - [Bezel](../stl/ata/Bezel.stl)
-- [Case back](../stl/poc_top.stl)
+- [Case back](../stl/Caseback.stl) ( optionally with the [hanger on the left side](../stl/Caseback_left.stl) )
 - [Button covers](../stl/poc_button.stl)
+
+There is also a replacement component available for printing: [Screen saver](../stl/screensaver.stl)
 
 ### Assembly
 
