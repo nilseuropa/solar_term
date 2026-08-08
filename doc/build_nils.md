@@ -1,30 +1,39 @@
-### Parts
+# Original SolarTerm enclosure
 
-- 1x **Waveshare ESP32-S3-RLCD-4.2** board _(not a similarly named ESP32-S3 or e-paper board)_
-- 1x SD Card _(optional, but recommended)_
-- 1x Rii 518BT Mini BLE keyboard
-- 1x 18650 lithium battery
-- 4x original screws from the Waveshare KIT
-- 4x M3 x 10 mm screws
-- [Bottom enclosure](../stl/poc_bottom.stl)
-- [Top enclosure](../stl/poc_top.stl)
-- [Buttons](../stl/poc_button.stl)
+This is the original proof-of-concept enclosure. It is a print-and-screw build
+and does not require soldering.
 
 ![Exploded assembly](blown_up.png)
 
-### Assembly
+## Parts
 
-This is a print-and-screw build; no soldering is required. The RLCD panel is
-sensitive to stress, so check the fit of the printed parts and work on a smooth,
-soft surface.
+- 1 × **Waveshare ESP32-S3-RLCD-4.2** board
+- 1 × Rii 518BT Mini Bluetooth keyboard
+- 1 × 18650 lithium-ion battery suitable for the Waveshare holder
+- 1 × microSD card, optional but recommended
+- 4 × original screws supplied with the Waveshare kit
+- 4 × M3 × 10 mm screws
+- [Bottom enclosure](../stl/poc_bottom.stl)
+- [Top enclosure](../stl/poc_top.stl)
+- [Three buttons](../stl/poc_button.stl)
 
-1. Print the enclosure parts and three buttons.
-2. Attach the RLCD board to the bottom enclosure with the screws supplied with
-   the board.
-3. Place the top enclosure face-down, insert the buttons, and fit the keyboard.
-4. If needed, secure the keyboard with double-sided tape no more than 1 mm
+Use only the Waveshare ESP32-S3-RLCD-4.2. Other Waveshare ESP32-S3 and e-paper
+boards do not fit this enclosure.
+
+## Assembly
+
+The RLCD panel is sensitive to impact, bending, and point loads. Check the
+printed-part fit before assembly and work on a clean, soft surface.
+
+1. Print the top, bottom, and three button parts.
+2. Attach the Waveshare board to the bottom enclosure with the four screws
+   supplied with the board. Tighten only until secure.
+3. Put the top enclosure face-down, insert the buttons, and fit the keyboard.
+4. If the keyboard moves, secure it with double-sided tape no more than 1 mm
    thick.
-5. Align both enclosure halves and fasten them with the four M3 screws.
-6. Insert the battery and install SolarOS.
+5. Align the enclosure halves without trapping the keyboard or speaker wiring.
+6. Fasten the halves with the four M3 × 10 mm screws.
+7. Insert the battery with the polarity shown on the Waveshare holder.
+8. Follow the [SolarOS installation instructions](../README.md#install-solaros).
 
-![](oribuild.jpg)
+![Assembled original enclosure](oribuild.jpg)
