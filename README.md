@@ -13,6 +13,9 @@ Bluetooth keyboard, an optional microSD card, and an 18650 battery.
 > names, including e-paper and other ESP32-S3 display boards, have different
 > dimensions, connectors, and pin assignments.
 
+In SolarOS, this board configuration is named `solar_term`; it is the same
+Waveshare ESP32-S3-RLCD-4.2 hardware described here.
+
 ## Build the enclosure
 
 Two enclosure designs are included:
@@ -44,7 +47,7 @@ export PATH="$PATH:$HOME/.platformio/penv/bin"
 ```sh
 git clone https://github.com/nilseuropa/solar_os.git
 cd solar_os
-pio run -e waveshare_esp32_s3_rlcd_4_2
+pio run -e solar_term
 ```
 
 The first build downloads the toolchain and dependencies. Continue only after
@@ -72,7 +75,7 @@ and `COM...` on Windows. Substitute the complete name for `<PORT>` below.
 3. Flash SolarOS:
 
 ```sh
-pio run -e waveshare_esp32_s3_rlcd_4_2 -t upload --upload-port <PORT>
+pio run -e solar_term -t upload --upload-port <PORT>
 ```
 
 Keep the cable connected until PlatformIO reports `SUCCESS`. The board restarts
@@ -89,7 +92,7 @@ automatically. Press **PWR** once if it remains off or in download mode.
   download mode again, and retry with the port currently listed by
   `pio device list`.
 - **Stale build configuration:** run
-  `pio run -e waveshare_esp32_s3_rlcd_4_2 -t clean`, then build again.
+  `pio run -e solar_term -t clean`, then build again.
 
 ## First boot
 
