@@ -1,29 +1,36 @@
 # SolarTerm
 
-![SolarTerm](doc/solarterm.jpg)
+![SolarTerm IPS and RLCD enclosures](doc/terminals.jpg)
 
-SolarTerm is a handheld enclosure and expansion platform for running
-[SolarOS](https://github.com/nilseuropa/solar_os) on the
-[Waveshare ESP32-S3-RLCD-4.2](https://docs.waveshare.com/ESP32-S3-RLCD-4.2).
-It combines the board's reflective 4.2-inch display with a Rii 518BT Mini
-Bluetooth keyboard, an optional microSD card, and an 18650 battery.
+SolarTerm is a family of handheld enclosures for running
+[SolarOS](https://github.com/nilseuropa/solar_os). Each design combines an
+ESP32-S3 display board with a Rii 518BT Mini Bluetooth keyboard, battery power,
+and optional microSD storage.
+
+Two board families are supported:
+
+- **SolarTerm RLCD** uses the reflective
+  [Waveshare ESP32-S3-RLCD-4.2](https://docs.waveshare.com/ESP32-S3-RLCD-4.2).
+- **SolarTerm IPS** uses the color, capacitive-touch Freenove ESP32-S3 Display
+  4.0-inch (FNK0104S).
 
 > [!IMPORTANT]
-> SolarTerm targets the **Waveshare ESP32-S3-RLCD-4.2**. Boards with similar
-> names, including e-paper and other ESP32-S3 display boards, have different
-> dimensions, connectors, and pin assignments.
+> The RLCD and IPS enclosures are board-specific. Their printed parts, battery
+> arrangements, connectors, and pin assignments are not interchangeable.
 
-In SolarOS, this board configuration is named `solar_term`; it is the same
-Waveshare ESP32-S3-RLCD-4.2 hardware described here.
+SolarOS names the Waveshare configuration `solar_term` and the Freenove
+configuration `freenove_esp32_s3_display_4_0`.
 
 ## Build the enclosure
 
-Two enclosure designs are included:
+Three enclosure designs are included:
 
-- [ATA F&E enclosure](doc/build_ata.md) — the current multipart design, with
-  threaded inserts and an optional protective acrylic window.
-- [Original enclosure](doc/build_nils.md) — the simpler proof-of-concept
-  print-and-screw design.
+- [IPS enclosure](doc/build_ips.md) — the enclosure for the Freenove 4.0-inch
+  IPS board.
+- [ATA F&E RLCD enclosure](doc/build_ata.md) — the multipart Waveshare design,
+  with threaded inserts and an optional protective acrylic window.
+- [Original RLCD enclosure](doc/build_nils.md) — the simpler Waveshare
+  proof-of-concept print-and-screw design.
 
 Read the selected build guide before ordering or printing parts. The display is
 fragile and must not be used as leverage while inserting a cable, battery, or
@@ -31,77 +38,34 @@ enclosure part.
 
 ## Install SolarOS
 
-You need Git, Python 3, [PlatformIO Core](https://docs.platformio.org/en/latest/core/installation/index.html),
-and a data-capable USB-C cable. The commands below work on Linux and macOS.
-Windows users can run the same `pio` commands in a PlatformIO IDE terminal.
+For a first installation or recovery, use the
+[SolarOS Web Flasher](https://solar-os.eu/flasher.html) in Chrome or Edge on a
+desktop computer. Connect the board with a data-capable USB cable and select
+the entry that matches the enclosure:
 
-Do not run PlatformIO with `sudo`. If `pio` is not on your `PATH`, use the
-PlatformIO virtual-environment copy directly or add it for the current shell:
+| Enclosure | Board in the Flasher |
+| --- | --- |
+| SolarTerm RLCD | SolarTerm (Waveshare ESP32-S3-RLCD-4.2) |
+| SolarTerm IPS | Freenove ESP32-S3 Display 4.0-inch (FNK0104S) |
 
-```sh
-export PATH="$PATH:$HOME/.platformio/penv/bin"
-```
+The Flasher downloads and verifies the selected official release before
+installing it. Follow its board-specific download-mode instructions and keep
+the USB cable connected until installation completes.
 
-### 1. Download and build
-
-```sh
-git clone https://github.com/nilseuropa/solar_os.git
-cd solar_os
-pio run -e solar_term
-```
-
-The first build downloads the toolchain and dependencies. Continue only after
-PlatformIO reports `SUCCESS`.
-
-### 2. Connect the board
-
-Connect the board's Type-C port to the computer and press **PWR** once. Hold the
-PCB, not the display, while connecting the cable.
-
-Find the serial port:
-
-```sh
-pio device list
-```
-
-Typical port names are `/dev/ttyACM0` on Linux, `/dev/cu.usbmodem...` on macOS,
-and `COM...` on Windows. Substitute the complete name for `<PORT>` below.
-
-### 3. Enter download mode and flash
-
-1. Long-press **PWR** to turn the board off.
-2. Hold **BOOT**, press **PWR** once, and release **BOOT** when the USB port
-   appears.
-3. Flash SolarOS:
-
-```sh
-pio run -e solar_term -t upload --upload-port <PORT>
-```
-
-Keep the cable connected until PlatformIO reports `SUCCESS`. The board restarts
-automatically. Press **PWR** once if it remains off or in download mode.
-
-### Flashing problems
-
-- **No serial port:** use a known data-capable cable or another USB port, then
-  repeat the **BOOT/PWR** sequence.
-- **Permission denied on Linux:** install PlatformIO's
-  [udev rules](https://docs.platformio.org/en/latest/core/installation/udev-rules.html),
-  reconnect the board, and apply any requested group change.
-- **Upload cannot connect:** close programs that use the serial port, enter
-  download mode again, and retry with the port currently listed by
-  `pio device list`.
-- **Stale build configuration:** run
-  `pio run -e solar_term -t clean`, then build again.
+To build or flash SolarOS from source instead, follow the
+[SolarOS quick start](https://solar-os.eu/quick-start.html#build-and-flash-from-source).
+It lists the required tools, PlatformIO environments, upload commands, and
+troubleshooting steps for supported boards.
 
 ## First boot
 
-1. Press **PWR** and wait for the SolarOS shell.
+1. Power the board and wait for the SolarOS shell.
 2. Turn on the Rii keyboard with its side switch.
 3. Press the pairing button on the back of the keyboard.
-4. Hold SolarTerm's **KEY** button for about two seconds. Release it when the
-   keyboard icon changes to its pairing or scanning state. The display shell
-   does not print a pairing message.
+4. Hold the board's SolarOS **KEY** button for about two seconds: **KEY** on the
+   Waveshare board, or **BOOT** on the Freenove board after SolarOS has started.
+   Release it when the keyboard icon changes to its pairing or scanning state.
+   The display shell does not print a pairing message.
 5. Wait for the keyboard to connect, then type at the shell.
 
 SolarOS remembers the keyboard and reconnects on later boots. A long press of
@@ -135,8 +99,9 @@ reboots into it. Keep the device powered until the upgrade finishes.
 
 ## Expansion cards
 
-The Waveshare board has a 2 × 8 expansion header with 2.54 mm pitch. SolarTerm
-cards use 3.3 V logic and follow the SolarOS pin assignments. See the
+The Waveshare RLCD board has a 2 × 8 expansion header with 2.54 mm pitch.
+SolarTerm cards use 3.3 V logic and follow the SolarOS pin assignments. They do
+not fit the Freenove IPS board. See the
 [SolarTerm expansion-card guide](expansions/README.md) before designing or
 connecting a card.
 
