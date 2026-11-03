@@ -7,24 +7,30 @@ SolarTerm is a family of handheld enclosures for running
 ESP32-S3 display board with a Rii 518BT Mini Bluetooth keyboard, battery power,
 and optional microSD storage.
 
-Two board families are supported:
+Three board families are supported:
 
 - **SolarTerm RLCD** uses the reflective
   [Waveshare ESP32-S3-RLCD-4.2](https://docs.waveshare.com/ESP32-S3-RLCD-4.2).
 - **SolarTerm IPS** uses the color, capacitive-touch Freenove ESP32-S3 Display
   4.0-inch (FNK0104S).
+- **StickyTerm** uses the Seeed Studio reTerminal Sticky e-paper touchscreen
+  in a folding enclosure with a swivel display mount.
 
 > [!IMPORTANT]
-> The RLCD and IPS enclosures are board-specific. Their printed parts, battery
-> arrangements, connectors, and pin assignments are not interchangeable.
+> The RLCD, IPS, and StickyTerm enclosures are board-specific. Their printed
+> parts, battery arrangements, connectors, and pin assignments are not
+> interchangeable.
 
 SolarOS names the Waveshare configuration `solar_term` and the Freenove
-configuration `freenove_esp32_s3_display_4_0`.
+configuration `freenove_esp32_s3_display_4_0`. StickyTerm uses
+`seeed_reterminal_sticky`.
 
 ## Build the enclosure
 
-Three enclosure designs are included:
+Four enclosure designs are included:
 
+- [StickyTerm enclosure](doc/build_sticky.md) — the folding reTerminal Sticky
+  design, with a swivel display mount and illustrated assembly instructions.
 - [IPS enclosure](doc/build_ips.md) — the enclosure for the Freenove 4.0-inch
   IPS board.
 - [ATA F&E RLCD enclosure](doc/build_ata.md) — the multipart Waveshare design,
@@ -47,6 +53,7 @@ the entry that matches the enclosure:
 | --- | --- |
 | SolarTerm RLCD | SolarTerm (Waveshare ESP32-S3-RLCD-4.2) |
 | SolarTerm IPS | Freenove ESP32-S3 Display 4.0-inch (FNK0104S) |
+| StickyTerm | Seeed Studio reTerminal Sticky |
 
 The Flasher downloads and verifies the selected official release before
 installing it. Follow its board-specific download-mode instructions and keep
@@ -62,14 +69,16 @@ troubleshooting steps for supported boards.
 1. Power the board and wait for the SolarOS shell.
 2. Turn on the Rii keyboard with its side switch.
 3. Press the pairing button on the back of the keyboard.
-4. Hold the board's SolarOS **KEY** button for about two seconds: **KEY** on the
-   Waveshare board, or **BOOT** on the Freenove board after SolarOS has started.
+4. After SolarOS has started, hold the board's pairing button for about two
+   seconds: **KEY** on the Waveshare board, **BOOT** on the Freenove board,
+   or **Up** on StickyTerm.
    Release it when the keyboard icon changes to its pairing or scanning state.
    The display shell does not print a pairing message.
 5. Wait for the keyboard to connect, then type at the shell.
 
 SolarOS remembers the keyboard and reconnects on later boots. A long press of
-**KEY** starts pairing again; a second long press while pairing cancels it.
+the same pairing button starts pairing again; a second long press while pairing
+cancels it.
 
 ## Optional microSD card
 
@@ -101,7 +110,7 @@ reboots into it. Keep the device powered until the upgrade finishes.
 
 The Waveshare RLCD board has a 2 × 8 expansion header with 2.54 mm pitch.
 SolarTerm cards use 3.3 V logic and follow the SolarOS pin assignments. They do
-not fit the Freenove IPS board. See the
+not fit the Freenove IPS board or reTerminal Sticky. See the
 [SolarTerm expansion-card guide](expansions/README.md) before designing or
 connecting a card.
 
